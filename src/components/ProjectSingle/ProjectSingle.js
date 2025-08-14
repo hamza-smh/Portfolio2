@@ -1,9 +1,9 @@
 
 import React, { Fragment } from 'react';
-import { Dialog, Grid, } from '@material-ui/core'
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import { Dialog, Grid, } from '@mui/material';
+import MuiDialogTitle from '@mui/material';
+import IconButton from '@mui/material';
+import Typography from '@mui/material';
 import { withStyles } from '@material-ui/core/styles';
 import './style.css'
 import Contact from './contact';

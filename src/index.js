@@ -8,11 +8,14 @@ import './css/flaticon.css';
 import './css/animate.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './sass/style.scss';
+import { ThemeProvider } from './context/theme';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <ThemeProvider>
+        <App />
+    </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ListItem from "@material-ui/core/List";
+import {ListItem} from "@mui/material";
 import { Link} from 'react-scroll'
 import './style.css';
 

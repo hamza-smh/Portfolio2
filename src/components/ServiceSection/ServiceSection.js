@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 import SectionTitle from "../SectionTitle/SectionTitle";
 import Services from '../../api/service'
 import classnames from 'classnames';

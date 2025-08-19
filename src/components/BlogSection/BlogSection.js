@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Slider from "react-slick";
-import { Button } from '@material-ui/core'
+import {Button} from '@mui/material'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import blogs from '../../api/blogs'

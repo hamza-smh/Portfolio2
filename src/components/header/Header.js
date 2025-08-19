@@ -3,12 +3,19 @@ import { Link} from 'react-scroll'
 import MobileMenu from '../MobileMenu/MobileMenu'
 import Logo from '../../images/logo.png'
 import cv from '../../images/cv.jpg'
-
+import { useTheme } from '../../context/theme'
 
 const Header = (props) => {
 
+    const {themeMode, setThemeMode } = useTheme();    
     const ClickHandler = () => {
         window.scrollTo(10, 0);
+    }
+    const handleTheme= ()=>{
+        themeMode==="dark"?
+            setThemeMode("light")
+            :
+            setThemeMode("dark")
     }
 
     return (
@@ -50,12 +57,18 @@ const Header = (props) => {
                             </div>
                             <div className="col-lg-2 col-md-2 col-2">
                                 <div className="header-right">
-                                    <div className="header-btn">
+                                    <div className="header-btn" style={{display:"flex",flexDirection:"row",gap:"25px"}}>
                                         <a onClick={ClickHandler} className="theme-btn" download="My Cv" href={cv}
                                             title="ImageName">
                                             <img className="hide-img" alt="ImageName" src={cv} />
                                             Resume
                                         </a>
+                                        <button
+                                            className = "theme-btn"
+                                            onClick={()=>handleTheme()}
+                                        >
+                                            theme
+                                        </button>
                                     </div>
                                 </div>
                             </div>

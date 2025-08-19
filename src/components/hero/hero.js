@@ -1,8 +1,7 @@
 import React from "react";
 import { Link} from 'react-scroll'
-
+import { useTheme } from '../../context/theme'
 import hero1 from '../../images/slider/hamzaa.png'
-
 import icon1 from '../../images/icon/react.svg'
 import icon2 from '../../images/icon/node.svg'
 import icon3 from '../../images/icon/icons8-postgresql.svg'
@@ -13,11 +12,13 @@ import shape2 from '../../images/slider/line-2.png'
 
 
 const Hero = () => {
+    const {themeMode, setThemeMode } = useTheme();   
+    
     return (
-        <section className="static-hero" id='home'>
-            <div className="hero-container">
-                <div className="hero-inner">
-                    <div className="container">
+        <section className="static-hero" id='home' style = {{filter: themeMode==="light"? "brightness(140%)":""}}>
+            <div div className = "hero-container">
+                <div className = "hero-inner">
+                    <div className = "container">
                         <div className="row align-items-center">
                             <div className="col-xl-6 col-lg-6 col-12">
                                 <div className="wpo-static-hero-inner">

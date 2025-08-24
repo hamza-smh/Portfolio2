@@ -44,7 +44,7 @@ function CustomDialogTitle({ children, onClose, ...other }) {
   );
 }
 
-const ProjectSingle = ({ maxWidth, open, onClose, title, pImg, psub1img1, psub1img2 }) => {
+const ProjectSingle = ({ project,maxWidth, open, onClose, title, pImg,info, psub1img1, psub1img2 }) => {
   return (
     <Fragment>
       <Dialog
@@ -67,43 +67,53 @@ const ProjectSingle = ({ maxWidth, open, onClose, title, pImg, psub1img1, psub1i
                       <div className="row align-items-center mb-5">
                         <div className="col-lg-7">
                           <div className="wpo-project-single-title">
-                            <h3>{title} Project</h3>
+                            <h3>{title}</h3>
                           </div>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus dis posuere
-                            amet tincidunt commodo, velit. Ipsum, hac nibh fermentum nisi, platea
-                            condimentum cursus velit dui. Massa volutpat odio facilisis purus sit
-                            elementum. Non.
-                          </p>
-                          <p>
-                            Hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa volutpat
-                            odio facilisis purus sit elementum. Non, sed velit dictum quam. Id risus
-                            pharetra est, at rhoncus, nec ullamcorper tincidunt. Id aliquet duis
-                            sollicitudin diam
-                          </p>
+                          <ul className="list-disc pl-6 space-y-2">
+                            {project.info?.map((point, index) => (
+                              <li key={index} style={{color:"#FFF"}}>{point}</li>
+                            ))}
+                          </ul>
                         </div>
                         <div className="col-lg-5">
                           <div className="wpo-project-single-content-des-right">
                             <ul>
-                              <li>Location :<span>7 Lake Street,London</span></li>
-                              <li>Client :<span>wpOceans</span></li>
-                              <li>Consult :<span>Harry Johnson</span></li>
-                              <li>Project Type :<span>Elito React</span></li>
-                              <li>Duration :<span>6 Month</span></li>
-                              <li>Completion :<span>15 Apr 2022</span></li>
-                              <li>Share :<span>Creative, Portfolio</span></li>
+                              <li>Location :<span>Karachi, Pakistan</span></li>
+                              {
+                              project.client?
+                              <li>Client :<span>{project?.client}</span></li>
+                              :
+                              <li>Company :<span>{project?.company}</span></li>
+                              }
+                              <li>Project Type :<span>{project?.type}</span></li>
+                              <li>Duration :<span>{project?.duration}</span></li>
+                              <li>Completion :<span>{project?.completion}</span></li>
+                              {project?.link &&<li>Share :<span>{project?.link}</span></li>}
                             </ul>
                           </div>
                         </div>
                       </div>
                       <div className="wpo-project-single-main-img">
-                        <ReactFancyBox thumbnail={pImg} image={pImg} />
+                        {/* <ReactFancyBox thumbnail={pImg} image={pImg} /> */}
+                              <div className = "wpo-project-img"
+                              style = {
+                                {
+                                  backgroundImage: `url(${project.pImg})`,
+                                  backgroundRepeat: "no-repeat",
+                                  backgroundPosition: "center center",
+                                  backgroundSize: "100% 100%",
+                                  height: "300px",
+                                  borderRadius: "10px",
+                                  boxShadow: " 0 14.5px 18.5px -12px #000000"
+                                }
+                              }
+                              />
                       </div>
                     </div>
 
                     {/* More sections here (unchanged from your original) */}
 
-                    <RelatedProject />
+                    <RelatedProject  skipProject={project}/>
                     <div className="wpo-project-single-item">
                       <div className="wpo-project-contact-area">
                         <div className="wpo-contact-title">

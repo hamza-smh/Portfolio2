@@ -1,8 +1,9 @@
 import React from 'react'
+import "./toggle.scss"
 import { Link} from 'react-scroll'
 import MobileMenu from '../MobileMenu/MobileMenu'
 import Logo from '../../images/logo.png'
-import cv from '../../images/cv.jpg'
+import resumePdf from '../../cv/SM_Hamza_Resume.pdf'
 import { useTheme } from '../../context/theme'
 
 const Header = (props) => {
@@ -11,6 +12,9 @@ const Header = (props) => {
     const ClickHandler = () => {
         window.scrollTo(10, 0);
     }
+     const toggleTheme = () => {
+         setThemeMode(themeMode === "dark" ? "light" : "dark");
+     };
     const handleTheme= ()=>{
         themeMode==="dark"?
             setThemeMode("light")
@@ -48,27 +52,41 @@ const Header = (props) => {
                                         <li>
                                             <Link activeClass="active" to="contact" spy={true} smooth={true}  duration={500}>Contact</Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link activeClass="active" to="blog" spy={true} smooth={true}  duration={500}>Blog</Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
 
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-2 col-2">
                                 <div className="header-right">
-                                    <div className="header-btn" style={{display:"flex",flexDirection:"row",gap:"25px"}}>
-                                        <a onClick={ClickHandler} className="theme-btn" download="My Cv" href={cv}
-                                            title="ImageName">
-                                            <img className="hide-img" alt="ImageName" src={cv} />
+                                    <div className="header-btn" style={{display:"flex",flexDirection:"row",gap:"35px",alignItems:"center"}}>
+                                        <a
+                                            className="theme-btn"
+                                            style={{background: themeMode==="light"?"linear-gradient(90deg,#02290e 10%, #076f26 80%, #fff000 )":""}}
+                                            href={resumePdf}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => {
+                                                const link = document.createElement('a');
+                                                link.href = resumePdf;
+                                                link.download = 'SM_Hamza_Resume';
+                                                document.body.appendChild(link);
+                                                link.click();
+                                                document.body.removeChild(link);
+                                            }}
+                                        >
                                             Resume
                                         </a>
-                                        <button
-                                            className = "theme-btn"
-                                            onClick={()=>handleTheme()}
+                                        <div
+                                          className={`switch ${themeMode === "dark" ? "dark" : "light"}`}
+                                          onClick={toggleTheme}
                                         >
-                                            theme
-                                        </button>
+                                          <div className="handle">
+                                            {themeMode === "dark" ? "🌙" : "☀️"}
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

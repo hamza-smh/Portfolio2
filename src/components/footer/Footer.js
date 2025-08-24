@@ -2,15 +2,16 @@ import React from 'react'
 import { Link} from 'react-scroll'
 import Logo from '../../images/logo.png'
 import CtaSection from '../ctaSection/ctaSection'
-
+import { useTheme } from '../../context/theme'
 
 const SubmitHandler = (e) => {
     e.preventDefault()
 }
 
 const Footer = (props) => {
+    const {themeMode, setThemeMode } = useTheme();    
     return (
-        <footer className="wpo-site-footer">
+        <footer className={`${themeMode==="dark"?"wpo-site-footer-dark":"wpo-site-footer"}`}>
             <CtaSection/>
             <div className="upper-footer">
                 <div className="container">
@@ -19,10 +20,9 @@ const Footer = (props) => {
                             <div className="widget about-widget">
                                 <div className="logo widget-title">
                                     <Link className="site-logo" to="/"><img
-                                        src={Logo} alt=""/>Elito.</Link>
+                                        src={Logo} alt=""/>Hamza.</Link>
                                 </div>
-                                <p>Welcome and open yourself to your truest love this year with us! With the Release
-                                    Process</p>
+                                <p style={{fontFamily:"Comfortaa"}}> "Half engineer, half designer, full-time React enthusiast.</p>
                                 <div className="social-icons">
                                     <ul>
                                         <li><Link to="/"><i className="ti-facebook"></i></Link></li>
@@ -43,7 +43,7 @@ const Footer = (props) => {
                                     <li><Link to="about" spy={true} smooth={true}  duration={500}>About us</Link></li>
                                     <li><Link to="contact" spy={true} smooth={true}  duration={500}>Contact us</Link></li>
                                     <li><Link to="portfolio" spy={true} smooth={true}  duration={500}>Projects</Link></li>
-                                    <li><Link to="blog" spy={true} smooth={true}  duration={500}>Recent Post</Link></li>
+                                    {/* <li><Link to="blog" spy={true} smooth={true}  duration={500}>Recent Post</Link></li> */}
                                 </ul>
                             </div>
                         </div>
@@ -55,8 +55,8 @@ const Footer = (props) => {
                                 <ul>
                                     <li><Link to="service" spy={true} smooth={true}  duration={500}>Web Design</Link></li>
                                     <li><Link to="service" spy={true} smooth={true}  duration={500}>Web Development</Link></li>
-                                    <li><Link to="service" spy={true} smooth={true}  duration={500}>Brand Identity</Link></li>
-                                    <li><Link to="service" spy={true} smooth={true}  duration={500}>Digital Marketing</Link></li>
+                                    <li><Link to="service" spy={true} smooth={true}  duration={500}>App Development</Link></li>
+                                    {/* <li><Link to="service" spy={true} smooth={true}  duration={500}>Digital Marketing</Link></li> */}
                                 </ul>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ const Footer = (props) => {
                                 <div className="widget-title">
                                     <h3>Newsletter</h3>
                                 </div>
-                                <p>Must explain to you how all this mistaken idea pleasure born and give you a complete account.</p>
+                                <p>Let's keep in touch</p>
                                 <form onSubmit={SubmitHandler}>
                                     <div className="input-1">
                                         <input type="email" className="form-control" placeholder="Email Address *" required/>
@@ -80,9 +80,15 @@ const Footer = (props) => {
                 </div>
                 <div className="shadow-shape">
                     <svg width="1319" height="1567" viewBox="0 0 1319 1567" fill="none">
-                        <g filter="url(#filter0_f_39_3833)">
+                        {themeMode==="dark"?
+                            <g filter="url(#filter0_f_39_3833)">
                             <circle cx="803" cy="803" r="303" fill="#59C378" fillOpacity="0.5" />
                         </g>
+                        :
+                        <g filter="url(#filter0_f_39_3833)">
+                            <circle cx="803" cy="803" r="303" fill="#23ca01" fillOpacity="0.8" />
+                        </g>
+                        }
                         <defs>
                             <filter id="filter0_f_39_3833" x="0" y="0" width="1606" height="1606"
                                 filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -98,7 +104,7 @@ const Footer = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="separator"></div>
-                        <p className="copyright">Copyright &copy; 2022 Elito. All rights reserved.</p>
+                        <p className="copyright">Copyright &copy; 2025 Hamza. All rights reserved.</p>
                     </div>
                 </div>
             </div>

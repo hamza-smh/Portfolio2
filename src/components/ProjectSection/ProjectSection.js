@@ -7,6 +7,7 @@ import simg1 from '../../images/project/line-1.png'
 import simg2 from '../../images/project/line-2.png'
 import ProjectSingle from '../ProjectSingle/ProjectSingle';
 import { Link } from 'react-scroll';
+import {useTheme} from "../../context/theme";
 
 const settings = {
     dots: false,
@@ -60,7 +61,7 @@ const settings = {
 
 
 const ProjectSection = (props) => {
-
+    const {themeMode, setThemeMode} = useTheme();
     const [open, setOpen] = React.useState(false);
 
     function handleClose() {
@@ -75,7 +76,8 @@ const ProjectSection = (props) => {
         setState(item)
     }
     return (
-        <div className="wpo-project-area section-padding" id='portfolio'>
+        <div div className = {`${themeMode==="dark"?"wpo-project-area-dark":"wpo-project-area"} section-padding`}
+        id = 'portfolio' >
             <div className="container">
                 <div className="wpo-section-title-s2">
                     <div className="row align-items-center">
@@ -96,13 +98,13 @@ const ProjectSection = (props) => {
                         </div>
                     </div>
                 </div>
-                <div div className = "wpo-project-wrap wpo-project-slide" >
+                <div className = "wpo-project-wrap wpo-project-slide" >
                     <Slider {...settings}>
                         {Projects.map((project, pro) => (
-                            <div className = "wpo-project-item" key = {pro}>
+                            <div onClick = {() => handleClickOpen(project)} className = "wpo-project-item" key = {pro}>
                                 <div className="wpo-project-img" style={{backgroundImage:`url(${project.pImg})`,backgroundRepeat:"no-repeat",backgroundPosition:"center center",backgroundSize:"100% 100%",height:"200px",borderRadius:"10px",boxShadow:" 0 14.5px 18.5px -12px #000000"}} />
                                 <div className="wpo-project-text">
-                                    <h2 onClick={() => handleClickOpen(project)}>{project.title}</h2>
+                                    <h2>{project.title}</h2>
                                     <span>{project.subTitle}</span>
                                 </div>
                             </div>
@@ -131,7 +133,9 @@ const ProjectSection = (props) => {
             <div className="line-shape-2">
                 <img src={simg2} alt="" />
             </div>
-            <ProjectSingle open={open} onClose={handleClose} title={state.title} pImg={state.ps1img} psub1img1={state.psub1img1} psub1img2={state.psub1img2} />
+                
+            <ProjectSingle open={open} onClose={handleClose} title={state.title} pImg={state.ps1img} psub1img1={state.psub1img1} psub1img2={state.psub1img2}  project={state}/>
+                
         </div>
     );
 }

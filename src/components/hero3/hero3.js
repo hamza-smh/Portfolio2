@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-scroll'
-import hero1 from '../../images/slider/slide-3.jpg'
+import hero1 from '../../images/slider/me2.jpg'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

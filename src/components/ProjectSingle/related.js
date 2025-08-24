@@ -2,7 +2,16 @@ import React from 'react';
 import Projects from '../../api/project'
 
 
-const RelatedProject = () => {
+const RelatedProject = ({skipProject}) => {
+
+    const remaining = Projects.filter(
+        (proj) => proj.Id !== skipProject.Id 
+    );
+
+    const related = remaining
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
 
     return (
         <div className="wpo-project-single-item">
@@ -12,11 +21,11 @@ const RelatedProject = () => {
             <div className="wpo-project-area-s2">
                 <div className="wpo-project-wrap">
                     <div className="row">
-                        {Projects.slice(0, 3).map((project, pot) => (
+                         {related.map((project,pot) => (
                             <div className="col col-lg-4 col-md-6 col-12" key={pot}>
                                 <div className="wpo-project-item">
                                     <div className="wpo-project-img">
-                                        <img src={project.pImg} alt=""/>
+                                        <img src={project.pImg} alt="" style={{height:"150px"}}/>
                                     </div>
                                     <div className="wpo-project-text">
                                         <h2>{project.title}</h2>

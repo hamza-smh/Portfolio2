@@ -4,8 +4,8 @@ import { Link} from 'react-scroll'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import hero1 from '../../images/slider/slide-1.jpg'
-import hero2 from '../../images/slider/slide-2.jpg'
+import hero1 from '../../images/slider/me2.jpg'
+import hero2 from '../../images/slider/me2.jpg'
 
 
 const settings = {

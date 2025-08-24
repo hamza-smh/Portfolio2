@@ -1,0 +1,53 @@
+
+.switch {
+  width: 70px;
+  height: 34px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ffefba, #ffffff);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding: 3px;
+  cursor: pointer;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.switch.light {
+  background: linear-gradient(135deg, #f8c828, #ffffff);
+  border:1px solid  rgba(255, 215, 0, 0.7);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+.switch.dark {
+  background: linear-gradient(135deg, #2c3e50, #000000);
+  box-shadow: 0 0 15px rgba(100, 149, 237, 0.7);
+}
+
+.handle {
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: transform 0.5s cubic-bezier(0.68,-0.55,0.27,1.55),
+              background 0.3s ease, box-shadow 0.3s ease;
+  position: absolute;
+  left: 3px;
+}
+
+/* Move handle right when dark */
+.switch.dark .handle {
+  transform: translateX(36px);
+  background: rgba(255,255,255,0.1);
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+/* Hover glow */
+.switch:hover .handle {
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}

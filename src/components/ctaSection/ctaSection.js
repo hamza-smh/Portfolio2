@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link} from 'react-scroll'
+import { useTheme } from '../../context/theme'
 
 const CtaSection = (props) => {
+    const {themeMode, setThemeMode } = useTheme();  
     return (
         <div className="upper-contact-area">
             <div className="container">
-                <div className="contact-grids">
+                <div className="contact-grids" style={{background:themeMode==="dark"?"#0b4100":"#178800"}}>
                     <div className="row align-items-center">
                         <div className="col col-lg-6">
                             <h2>Send me a message and make something together.</h2>
@@ -16,7 +18,7 @@ const CtaSection = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="left-shape"></div>
+                    <div className="left-shape" style={{background:themeMode==="dark"?"#0b4100":"#178800"}}/>
                 </div>
             </div>
         </div>

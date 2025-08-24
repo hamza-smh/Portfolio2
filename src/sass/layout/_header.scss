@@ -1468,3 +1468,12 @@
 	background: $bg-color;
 	border: none;
   }
+  .fixed-navbar.active .wpo-header-style-2 .wpo-site-header-dark{
+	position: fixed;
+	z-index: 555;
+	top: 0px;
+	left: 0;
+	width: 100%;
+	background: #13131355;
+	border: none;
+  }

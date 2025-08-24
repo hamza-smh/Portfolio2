@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import facoonLabs from "../../images/work/logoFullNameWhite.png"
 import amp from "../../images/work/AMP Logo.png"
 import SectionTitle from '../SectionTitle/SectionTitle'
+import {useTheme} from "../../context/theme";
 
 const Expriences = [
     {
@@ -47,8 +48,9 @@ const Expriences = [
 
 
 const Exprience = (props) => {
+    const {themeMode, setThemeMode} = useTheme();
     return (
-        <div className="wpo-work-area section-padding">
+        <div className = {`${themeMode==="dark"?"wpo-work-area-dark":"wpo-work-area"} section-padding`}>
             <div className="container">
                 <SectionTitle 
                     Title={'My Work Experience'} 

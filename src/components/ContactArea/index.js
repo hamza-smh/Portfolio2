@@ -1,11 +1,23 @@
 import React from 'react'
 import ContactForm from '../ContactFrom/ContactForm'
 import SectionTitle from '../SectionTitle/SectionTitle';
+import {useTheme} from "../../context/theme";
+import shape1 from "../../images/about/shape1.png";
+import shape2 from "../../images/about/shape2.png";
 
 
 const ContactArea = (props) => {
+  const {themeMode, setThemeMode} = useTheme();
     return (
-        <section className={`wpo-contact-area section-padding ${props.contactclass}`} id="contact">
+        <div section className = {` section-padding ${props.contactclass, themeMode==="dark"?"wpo-contact-area-dark":"wpo-contact-area"}`} id = "contact" style={{position:"relative"}}>
+          <div style = {{position: "absolute",pointerEvents: "none"}}>
+              <div className="line-shape-1">
+                  <img src={shape1} alt="" />
+              </div>
+              <div className="line-shape-2">
+                  <img src={shape2} alt="" />
+              </div>
+          </div>
             <div className="wpo-wpo-contact-form-map">
                 <div className="container">
                     <div className="row">
@@ -15,14 +27,14 @@ const ContactArea = (props) => {
                         <div className="co-lg-10 offset-lg-1  col-12">
                             <div className="row">
                                 <div className="col col-lg-6 col-md-12 col-12">
-                                    <div className="wpo-contact-form">
+                                    <div className = {`${themeMode==="dark"?"wpo-contact-form-dark":"wpo-contact-form"}`}>
                                         <h2>Get In Touch</h2>
                                         <ContactForm />
                                     </div>
                                 </div>
                                 <div className="col col-lg-6 col-md-12 col-12">
                                     <div className="wpo-contact-info">
-                                        <div className="info-item">
+                                        <div className={`${themeMode==="dark"?"info-item-dark":"info-item"}`}>
                                              <div className="info-wrap">
                                             <a
                                               href="https://www.google.com/maps?q=X3H4+6JQ+North+Karachi,+Karachi,+Pakistan"
@@ -31,7 +43,7 @@ const ContactArea = (props) => {
                                               className="info-wrap address"
                                               style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
                                             >
-                                              <div className="info-icon">
+                                              <div className={`${themeMode==="dark"?"info-icon-dark":"info-icon"}`}>
                                                 <i className="fi flaticon-location"></i>
                                               </div>
                                               <div className="info-text">
@@ -40,10 +52,10 @@ const ContactArea = (props) => {
                                             </a>
                                             </div>
                                         </div>
-                                        <div className="info-item">
+                                        <div className = {`${themeMode==="dark"?"info-item-dark":"info-item"}`}>
                                             <div className="info-wrap">
                                                 <a href="mailto:hamza.smh2000@gmail.com" className="info-wrap mail" style={{ textDecoration: "none", color: "inherit" }}>
-                                                  <div className="info-icon">
+                                                  <div className={`${themeMode==="dark"?"info-icon-dark":"info-icon"}`}>
                                                     <i className="fi flaticon-mail"></i>
                                                   </div>
                                                   <div className="info-text">
@@ -53,10 +65,10 @@ const ContactArea = (props) => {
 
                                             </div>
                                         </div>
-                                        <div className="info-item">
+                                        <div className={`${themeMode==="dark"?"info-item-dark":"info-item"}`}>
                                             <div className="info-wrap">
                                             <div className="info-wrap call">
-                                              <div className="info-icon">
+                                              <div className={`${themeMode==="dark"?"info-icon-dark":"info-icon"}`}>
                                                 <i className="fi flaticon-phone-call"></i>
                                               </div>
                                               <div className="info-text">
@@ -96,7 +108,7 @@ const ContactArea = (props) => {
                     </defs>
                 </svg>
             </div>
-        </section>
+        </div>
     )
 }
 

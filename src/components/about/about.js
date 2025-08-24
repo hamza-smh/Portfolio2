@@ -1,12 +1,14 @@
 import React from 'react'
+import { useTheme } from '../../context/theme'
 import shape1 from '../../images/about/shape1.png'
 import shape2 from '../../images/about/shape2.png'
 
 
 const About = (props) => {
+    const {themeMode, setThemeMode } = useTheme();   
     return(
-        <div className="wpo-about-area section-padding" id='about'>
-            <div className="container">
+        <div className = {`section-padding ${themeMode==="dark"?"wpo-about-area-dark":"wpo-about-area" }`} id = 'about' >
+            <div div className = "container" style = {{filter: themeMode === "light" ? "brightness(160%)" : ""}}>
                 <div className="row align-items-center">
                     <div className="col-lg-5 col-md-12 col-sm-12">
                         <div className="wpo-about-exprience-wrap">
@@ -16,7 +18,7 @@ const About = (props) => {
                             </div>
                             <div className="client">
                                 <h3><span data-count="100">100</span>%</h3>
-                                <p>Clients Satisfections</p>
+                                <p>Clients Satisfactions</p>
                             </div>
                         </div>
                     </div>
@@ -40,7 +42,7 @@ const About = (props) => {
                                     </div>
                                 </div>
                                 <div className="grid">
-                                    <div className="grid-inner">
+                                    <div className="grid-inner" style={{height:"100%"}}>
                                         <h3><span data-count="90">90</span>%</h3>
                                         <p>Next.JS</p>
                                     </div>

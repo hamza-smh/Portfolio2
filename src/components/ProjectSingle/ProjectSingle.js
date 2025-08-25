@@ -10,8 +10,10 @@ import { styled } from '@mui/material/styles';
 
 import './style.css';
 import Contact from './contact';
-import ReactFancyBox from 'react-fancybox';
-import 'react-fancybox/lib/fancybox.css';
+// import ReactFancyBox from 'react-fancybox';
+// import 'react-fancybox/lib/fancybox.css';
+// import Lightbox from "yet-another-react-lightbox";
+// import "yet-another-react-lightbox/styles.css";
 import RelatedProject from './related';
 import CloseIcon from '@mui/icons-material/Close';
 

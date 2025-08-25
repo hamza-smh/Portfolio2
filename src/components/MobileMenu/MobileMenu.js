@@ -29,11 +29,11 @@ const menus = [
         title: 'Contact',
         link: 'contact',
     },
-    {
-        id: 5,
-        title: 'Blog',
-        link: 'blog',
-    },
+    // {
+    //     id: 5,
+    //     title: 'Blog',
+    //     link: 'blog',
+    // },
 
 
 ]

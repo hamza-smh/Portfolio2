@@ -7,7 +7,7 @@ const CtaSection = (props) => {
     return (
         <div className="upper-contact-area">
             <div className="container">
-                <div className="contact-grids" style={{background:themeMode==="dark"?"#0b4100":"#178800"}}>
+                <div className = "contact-grids" style = {{background: themeMode === "dark" ? "linear-gradient(270deg, #000, #0b4100)" : "linear-gradient(270deg, #000, #23ca01)"}}>
                     <div className="row align-items-center">
                         <div className="col col-lg-6">
                             <h2>Send me a message and make something together.</h2>
@@ -18,7 +18,13 @@ const CtaSection = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="left-shape" style={{background:themeMode==="dark"?"#0b4100":"#178800"}}/>
+                    < div className = "left-shape"
+                    style = {
+                        {
+                            background: themeMode === "dark" ? "#0b4100" : "#23ca01"
+                        }
+                    }
+                    />
                 </div>
             </div>
         </div>

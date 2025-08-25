@@ -28,7 +28,8 @@
 		}
 
 		.contact-grids {
-			background:#23ca01;
+			//background:#23ca01;
+			//background: linear-gradient(135deg, #000, #23ca01);
 			padding: 80px 165px;
 			position: relative;
 			z-index: 1;
@@ -52,7 +53,7 @@
 				top: 0;
 				width: 40%;
 				height: 100%;
-				background:#1fb502;
+				//background:#1fb502;
 				z-index: 1;
 
 				&:before {
@@ -283,7 +284,7 @@
 
 		ul a:hover,
 		ul li:hover:before {
-			color: $theme-primary-color;
+			color: $theme-primary-color-s2;
 		}
 
 		ul > li + li {
@@ -390,7 +391,8 @@
 		}
 
 		.contact-grids {
-			background:#0b4100;
+			// background:#0b4100;
+			background: linear-gradient(135deg, #000, #0b4100);
 			padding: 80px 165px;
 			position: relative;
 			z-index: 1;
@@ -414,7 +416,7 @@
 				top: 0;
 				width: 40%;
 				height: 100%;
-				background:#178800;
+				//background:#178800;
 				z-index: 1;
 
 				&:before {

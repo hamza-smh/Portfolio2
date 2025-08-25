@@ -79,7 +79,7 @@ const Contact = () => {
                             <option>Choose a Service</option>
                             <option>Web Design</option>
                             <option>Web Development</option>
-                            <option>Marketing</option>
+                            <option>App</option>
                         </select>
                         {validator.message('subject', forms.subject, 'required|alpha_space')}
                     </div>

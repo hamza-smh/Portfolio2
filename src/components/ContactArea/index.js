@@ -9,7 +9,7 @@ import shape2 from "../../images/about/shape2.png";
 const ContactArea = (props) => {
   const {themeMode, setThemeMode} = useTheme();
     return (
-        <div section className = {` section-padding ${props.contactclass, themeMode==="dark"?"wpo-contact-area-dark":"wpo-contact-area"}`} id = "contact" style={{position:"relative"}}>
+        <section className = {` section-padding ${props.contactclass, themeMode==="dark"?"wpo-contact-area-dark":"wpo-contact-area"}`} id = "contact" style={{position:"relative"}}>
           <div style = {{position: "absolute",pointerEvents: "none"}}>
               <div className="line-shape-1">
                   <img src={shape1} alt="" />
@@ -24,7 +24,7 @@ const ContactArea = (props) => {
                         <SectionTitle Title={'Let’s Talk'} />
                     </div>
                     <div className="row">
-                        <div className="co-lg-10 offset-lg-1  col-12">
+                        <div className="co-lg-10 offset-lg-1 col-12">
                             <div className="row">
                                 <div className="col col-lg-6 col-md-12 col-12">
                                     <div className = {`${themeMode==="dark"?"wpo-contact-form-dark":"wpo-contact-form"}`}>
@@ -108,7 +108,7 @@ const ContactArea = (props) => {
                     </defs>
                 </svg>
             </div>
-        </div>
+        </section>
     )
 }
 

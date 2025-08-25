@@ -25,11 +25,9 @@ const Footer = (props) => {
                                 <p style={{fontFamily:"Comfortaa"}}> "Half engineer, half designer, full-time React enthusiast.</p>
                                 <div className="social-icons">
                                     <ul>
-                                        <li><Link to="/"><i className="ti-facebook"></i></Link></li>
-                                        <li><Link to="/"><i className="ti-twitter-alt"></i></Link></li>
-                                        <li><Link to="/"><i className="ti-linkedin"></i></Link></li>
-                                        <li><Link to="/"><i className="ti-pinterest"></i></Link></li>
-                                        <li><Link to="/"><i className="ti-vimeo-alt"></i></Link></li>
+                                        <li><Link to="https://www.facebook.com/share/1CoLy47Kh4/"><i className="ti-facebook"></i></Link></li>
+                                        <li><Link to="https://github.com/hamza-smh"><i className="ti-github"></i></Link></li>
+                                        <li><Link to="https://www.linkedin.com/in/syed-muhammad-hamza-1822a7209/"><i className="ti-linkedin"></i></Link></li>
                                     </ul>
                                 </div>
                             </div>

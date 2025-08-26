@@ -1,52 +1,73 @@
-import React, {useState} from "react";
-import {TabContent, TabPane, Nav, NavItem, NavLink} from "reactstrap";
-import {useTheme} from "../../context/theme";
-import {Button} from "@mui/material";
+import React, { useState } from "react";
+import { useTheme } from "../../context/theme";
+import { Button } from "@mui/material";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import Services from "../../api/service";
-import classnames from "classnames";
 import ServiceSingle from "../ServiceSingle";
 import shape1 from "../../images/slider/line-1.png";
 import shape2 from "../../images/slider/line-2.png";
 import shape3 from "../../images/about/shape1.png";
 import shape4 from "../../images/about/shape2.png";
+import "./service.css"
 
 const ServiceSection = (props) => {
-    const {themeMode, setThemeMode} = useTheme();
-    const [open, setOpen] = React.useState(false);
-
-    function handleClose() {
-        setOpen(false);
-    }
-
+    const { themeMode } = useTheme();
+    const [open, setOpen] = useState(false);
     const [state, setState] = useState({});
+    const [activeTab, setActiveTab] = useState("1");
 
     const handleClickOpen = (item) => {
         setOpen(true);
         setState(item);
     };
 
-    const [activeTab, setActiveTab] = useState("1");
+    const handleClose = () => setOpen(false);
 
-    const toggle = (tab) => {
-        if (activeTab !== tab) setActiveTab(tab);
-    };
+    const renderServices = (start, end) => (
+        <div className="row align-items-center" style={{ height: "66vh" }}>
+            {Services.slice(start, end).map((service, srv) => (
+                <div
+                    className="col-lg-4 col-md-6 col-12"
+                    key={srv}
+                    style={{ height: "100%", zIndex: 20 }}
+                >
+                    <div
+                        className="wpo-service-item"
+                        style={{ height: "100%", backdropFilter: "blur(20px)" }}
+                    >
+                        <div style={{ padding: "30px", display: "flex", justifyContent: "center" }}>
+                            <img
+                                src={service.icon}
+                                alt=""
+                                className="fi"
+                                style={{
+                                    width: "100px",
+                                    height: "100px",
+                                    filter: "invert(89%) sepia(97%) saturate(700%) hue-rotate(0deg) brightness(103%) contrast(105%)",
+                                }}
+                            />
+                        </div>
+                        <h2>{service.sTitle}</h2>
+                        <p>{service.description}</p>
+                        <Button className="btn" onClick={() => handleClickOpen(service)}>
+                            Learn More
+                        </Button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 
     return (
         <div
             className={`section-padding ${
-                (props.sClass, themeMode === "dark" ? "wpo-service-area-dark" : "wpo-service-area")
+                themeMode === "dark" ? "wpo-service-area-dark" : "wpo-service-area"
             }`}
             id="service"
-            style={{position: "relative"}}
+            style={{ position: "relative" }}
         >
-            <div
-                style={{
-                    position: "absolute",
-                    zIndex: 1,
-                    pointerEvents: "none",
-                }}
-            >
+            {/* background shapes */}
+            <div style={{ position: "absolute", zIndex: 1, pointerEvents: "none" }}>
                 {themeMode === "dark" ? (
                     <>
                         <div className="line-shape-1">
@@ -67,152 +88,42 @@ const ServiceSection = (props) => {
                     </>
                 )}
             </div>
+
             <div className="container">
                 <SectionTitle Title={"Popular Services"} />
                 <div className="wpo-service-wrap">
-                    <Nav tabs>
-                        <NavItem>
-                            <NavLink
-                                className={`${classnames({active: activeTab === "1"})}`}
-                                onClick={() => {
-                                    toggle("1");
-                                }}
-                                style={{fontSize: "22px", zIndex: 90}}
-                            >
-                                Template Integration
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink
-                                className={`${classnames({active: activeTab === "2"})}`}
-                                onClick={() => {
-                                    toggle("2");
-                                }}
-                                style={{fontSize: "22px", zIndex: 20}}
-                            >
-                                API Integration
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink
-                                className={`${classnames({active: activeTab === "3"})}`}
-                                onClick={() => {
-                                    toggle("3");
-                                }}
-                                style={{
-                                    fontSize: "16px",
-                                    textWrap: "nowrap",
-                                    width: "fit-content",
-                                    padding: "0px 15px",
-                                    zIndex: 20,
-                                }}
-                            >
-                                Custom Application Development
-                            </NavLink>
-                        </NavItem>
-                    </Nav>
-                    <TabContent activeTab={activeTab}>
-                        <TabPane tabId="1">
-                            <div className="row align-items-center" style={{height: "66vh"}}>
-                                {Services.slice(0, 3).map((service, srv) => (
-                                    <div
-                                        div
-                                        className="col-lg-4 col-md-6 col-12"
-                                        key={srv}
-                                        style={{height: "100%", zIndex: 20}}
-                                    >
-                                        <div
-                                            className="wpo-service-item"
-                                            style={{height: "100%", backdropFilter: "blur(20px)"}}
-                                        >
-                                            <div style={{padding: "30px", display: "flex", justifyContent: "center"}}>
-                                                <img
-                                                    src={service.icon}
-                                                    alt=""
-                                                    className="fi"
-                                                    style={{
-                                                        width: "100px",
-                                                        height: "100px",
-                                                        filter: "invert(89%) sepia(97%) saturate(700%) hue-rotate(0deg) brightness(103%) contrast(105%)",
-                                                    }}
-                                                />
-                                            </div>
-                                            <h2>{service.sTitle}</h2>
-                                            <p>{service.description}</p>
-                                            <Button className="btn" onClick={() => handleClickOpen(service)}>
-                                                Learn More
-                                            </Button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </TabPane>
-                        <TabPane tabId="2">
-                            <div className="row align-items-center" style={{height: "66vh"}}>
-                                {Services.slice(3, 6).map((service, srv) => (
-                                    <div className="col-lg-4 col-md-6 col-12" key={srv} style={{height: "100%",zIndex:20}}>
-                                        <div
-                                            className="wpo-service-item"
-                                            style={{height: "100%", backdropFilter: "blur(20px)"}}
-                                        >
-                                            <div style={{padding: "30px", display: "flex", justifyContent: "center"}}>
-                                                <img
-                                                    src={service.icon}
-                                                    alt=""
-                                                    className="fi"
-                                                    style={{
-                                                        width: "100px",
-                                                        height: "100px",
-                                                        filter: "invert(89%) sepia(97%) saturate(700%) hue-rotate(0deg) brightness(103%) contrast(105%)",
-                                                    }}
-                                                />
-                                            </div>
-                                            <h2>{service.sTitle}</h2>
-                                            <p>{service.description}</p>
-                                            <Button className="btn" onClick={() => handleClickOpen(service)}>
-                                                Learn More
-                                            </Button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </TabPane>
-                        <TabPane tabId="3">
-                            <div className="row align-items-center" style={{height: "66vh"}}>
-                                {Services.slice(6, 9).map((service, srv) => (
-                                    <div className="col-lg-4 col-md-6 col-12" key={srv} style={{height: "100%",zIndex:20}}>
-                                        <div
-                                            className="wpo-service-item"
-                                            style={{height: "100%", backdropFilter: "blur(20px)"}}
-                                        >
-                                            {/* <div className="icon">
-                                                <i className={`fi ${service.icon}`}></i>
-                                            </div> */}
-                                            <div style={{padding: "30px", display: "flex", justifyContent: "center"}}>
-                                                <img
-                                                    src={service.icon}
-                                                    alt=""
-                                                    className="fi"
-                                                    style={{
-                                                        width: "100px",
-                                                        height: "100px",
-                                                        filter: "invert(89%) sepia(97%) saturate(700%) hue-rotate(0deg) brightness(103%) contrast(105%)",
-                                                    }}
-                                                />
-                                            </div>
-                                            <h2>{service.sTitle}</h2>
-                                            <p>{service.description}</p>
-                                            <Button className="btn" onClick={() => handleClickOpen(service)}>
-                                                Learn More
-                                            </Button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </TabPane>
-                    </TabContent>
+                    {/* --- CUSTOM TAB NAV --- */}
+                    <div className="custom-tabs">
+                        <button
+                            className={`tab-btn ${activeTab === "1" ? "active" : ""}`}
+                            onClick={() => setActiveTab("1")}
+                        >
+                            Template Integration
+                        </button>
+                        <button
+                            className={`tab-btn ${activeTab === "2" ? "active" : ""}`}
+                            onClick={() => setActiveTab("2")}
+                        >
+                            API Integration
+                        </button>
+                        <button
+                            className={`tab-btn ${activeTab === "3" ? "active" : ""}`}
+                            onClick={() => setActiveTab("3")}
+                        >
+                            Custom Application Development
+                        </button>
+                    </div>
+
+                    {/* --- TAB CONTENT --- */}
+                    <div className="custom-tab-content">
+                        {activeTab === "1" && renderServices(0, 3)}
+                        {activeTab === "2" && renderServices(3, 6)}
+                        {activeTab === "3" && renderServices(6, 9)}
+                    </div>
                 </div>
             </div>
+
+            {/* background svg glow */}
             <div className="ab-shape">
                 <svg width="995" height="1495" viewBox="0 0 995 1495" fill="none">
                     {themeMode === "dark" ? (
@@ -242,6 +153,7 @@ const ServiceSection = (props) => {
                     </defs>
                 </svg>
             </div>
+
             <ServiceSingle
                 open={open}
                 onClose={handleClose}
